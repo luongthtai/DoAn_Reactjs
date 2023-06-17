@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    th {
+        position: initial !important;
+    }
+}
+
+.mySlider {
+    padding: 0 20px;
+    z-index: 0 !important;
+
+    .swiper-button-disabled {
+        display: none;
+    }
+    
+    .swiper-button-prev, .swiper-button-next {
+        color: #000;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border-radius: 50%;
+        top: 50%;
+        margin: 0;
+
+        &::after {
+           font-size: 12px;
+           font-weight: 700;
+        }
+    }
+
+    .swiper-button-prev {
+        left: 40px;
+        transform: translate(-50%, -50%);
+    }
+
+    .swiper-button-next {
+        right: 40px;
+        transform: translate(50%, -50%);
+    }
+}

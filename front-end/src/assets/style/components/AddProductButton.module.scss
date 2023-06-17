@@ -1,0 +1,19 @@
+#root {    
+    button {
+        transition: .2s;
+    }
+
+    &:hover {
+        button {
+            color: #fff;
+
+            &:first-child {
+                background-color: rgb(16 185 129);
+            }
+
+            &:last-child {
+                background: rgb(5 150 105);
+            }
+        }
+    }
+}

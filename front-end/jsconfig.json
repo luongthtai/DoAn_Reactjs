@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "baseUrl": "./src",
+        "target": "ES6",
+        "paths": {
+            "products/*": [
+                "assets/image/products/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
