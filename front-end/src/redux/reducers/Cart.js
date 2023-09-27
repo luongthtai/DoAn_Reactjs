@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 
 const { createSlice } = require("@reduxjs/toolkit");
 const { fetchCart } = require("redux/actions/CartAction");
@@ -11,13 +11,23 @@ const cartSlide = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            // const data = action.payload
+            const data = action.payload
 
-            // axios.post(`/carts/create`, data)
-            // .then(res => res.data)
-            // .catch(err => console.log(err))
+            if (state.cart.length !== 0) {
+                state.cart.map(item => {
+                    if (item.idProduct === data.idProduct) {
+                        return item.quantity = data.quantity + 1
+                    } else {
+                        return state.cart.push(data)
+                    }
+                })
+            } else {
+                state.cart.push(data)
+            }
+        },
+        removeToCart: (state, action) => {
+            const data = action.payload
 
-            console.log(action.payload)
         }
     },
 
@@ -34,5 +44,5 @@ const cartSlide = createSlice({
 })
 
 const { actions, reducer } = cartSlide
-export const { addToCart } = actions
+export const { addToCart, removeToCart } = actions
 export default reducer

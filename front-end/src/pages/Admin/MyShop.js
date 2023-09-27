@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 export default function MyShop() {
-    const id = useSelector(state => state.auth.user[0].id)
-    
+    const id = useSelector(state => state.auth.user.id)
+
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 

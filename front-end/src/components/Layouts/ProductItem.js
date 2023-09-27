@@ -12,7 +12,7 @@ export default function ProductItem({ name, price, img, sell, descripe, id, noti
 
     const [wishlist, setWishlist] = useState(false)
 
-    const idUser = useSelector(state => state.auth.user[0].id)
+    const idUser = useSelector(state => state.auth.user.id)
 
     const handleClick = () => {
         setShow(!show)

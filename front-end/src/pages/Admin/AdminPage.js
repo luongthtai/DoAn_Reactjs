@@ -19,7 +19,7 @@ export default function AdminPage() {
     const [toggleSidebar, setToggleSidebar] = useState(false)
 
     const isLogin = useSelector(state => state.auth.isLogin)
-    const id = useSelector(state => state.auth.user[0].id)
+    const id = useSelector(state => state.auth.user.id)
 
     useEffect(() => {
         if (id) {

@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi'
 import css from 'assets/style/components/AddProductButton.module.scss'
 import { useDispatch } from 'react-redux'
-import { addToCart } from 'redux/reducers/Cart'
+import { addToCart, removeToCart } from 'redux/reducers/Cart'
 import { useSelector } from 'react-redux'
 
 export default function AddProductButton({ idProduct }) {
     const dispatch = useDispatch()
-    const id = useSelector(state => state.auth.user[0].id)
-    
+    const id = useSelector(state => state.auth.user.id)
+
     const [addProduct, setAddProduct] = useState({
         quantity: 0,
         idUser: id,
@@ -17,48 +17,37 @@ export default function AddProductButton({ idProduct }) {
 
     // Do you want add cart you need idUser, idShop and quantity
 
-    // const handleClick = () => {
-    //     setAddProduct({
-    //         ...addProduct,
-    //         quantity: quantity += 1
-    //     })
-
-    //     dispatch(addToCart(addProduct))
-    // }
-
     const handlePlusValue = () => {
+        const newQuantity = addProduct.quantity + 1
+
         setAddProduct({
             ...addProduct,
-            quantity: addProduct.quantity += 1
+            quantity: newQuantity
         })
 
         dispatch(addToCart(addProduct))
     }
 
     const handleMinusValue = () => {
+        const newQuantity = addProduct.quantity - 1
+
         setAddProduct({
             ...addProduct,
-            quantity: addProduct.quantity -= 1
+            quantity: newQuantity
         })
 
-        dispatch(addToCart(addProduct))
+        dispatch(removeToCart(addProduct))
     }
+
+    console.log(addProduct)
 
     return (
         <>
-            {
-                addProduct.quantity === 0 ?
-                    <div className='flex items-center text-sm' id={css.root} onClick={handlePlusValue}>
-                        <button className='bg-gray-100 w-full h-full rounded-l'>Add</button>
-                        <button className='p-3 bg-gray-200 rounded-r'><HiPlusSm /></button>
-                    </div>
-                    :
-                    <div className='flex items-center justify-between bg-emerald-500 rounded text-white text-sm'>
-                        <button className='p-3 hover:bg-emerald-600 rounded-l' onClick={handleMinusValue}><HiMinusSm /></button>
-                        <span>{addProduct.quantity}</span>
-                        <button className='p-3 hover:bg-emerald-600 rounded-r' onClick={handlePlusValue}><HiPlusSm /></button>
-                    </div>
-            }
+            <div className={`flex items-center text-sm ${addProduct.quantity ? 'bg-emerald-400' : 'bg-gray-100'}`} id={css.root} onClick={addProduct.quantity ? null : handlePlusValue}>
+                <button className={`p-3 bg-emerald-700 rounded-l text-white ${addProduct.quantity ? 'block' : 'hidden'}`} onClick={handleMinusValue}><HiMinusSm /></button>
+                <button className={`w-full h-full rounded-l`}>{addProduct.quantity || 'Add'}</button>
+                <button className={`p-3 rounded-r ${addProduct.quantity ? 'bg-emerald-700 text-white' : 'bg-gray-200'}`} onClick={handlePlusValue}><HiPlusSm /></button>
+            </div>
         </>
     )
 }

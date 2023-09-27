@@ -6,7 +6,7 @@ import DataShop from 'components/Sections/Admin/DataShop'
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function Dashboard() {
-  const idUser = useSelector(state => state.auth.user[0].id)
+  const idUser = useSelector(state => state.auth.user.id)
   const dispatch = useDispatch()
 
   const [data, setData] = useState([])
@@ -32,7 +32,7 @@ export default function Dashboard() {
         data.map(item =>
           <section className='grid gap-5' key={item.id}>
             <SideBarShop sine={item.created_at} address={item.address} avatar={item.logo} city={item.city} description={item.description} id={item.id} phone={item.phone} shopName={item.name_shop} coverImg={item.cover_img} />
-            <DataShop sine={item.created_at} totalProduct={item.product_count}/>
+            <DataShop sine={item.created_at} totalProduct={item.product_count} />
           </section>
         )
       }

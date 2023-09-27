@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import Login from 'components/Sections/Client/Login'
 
 export default function CreateShop() {
-    const id = useSelector(state => state.auth.user[0].id)
+    const id = useSelector(state => state.auth.user.id)
     const checkShop = useSelector(state => state.auth.role)
 
     const notify = (title) => toast.error(title)

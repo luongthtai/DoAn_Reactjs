@@ -63,13 +63,13 @@ export default function CreateProduct() {
                 // console.log('image', value.size)
                 setFileNameImage(value.name)
 
-                return value.size <= 30000
+                return value.size <= 900000
             }),
             gallery: Yup.mixed().required('Required !!!').test('fileSize', 'The file is to large', (value) => {
                 // console.log('gallery', value)
                 setFileNameGallery(value.name)
 
-                return value.size <= 30000
+                return value.size <= 900000
             })
         }),
         onSubmit: (values, { setSubmitting, resetForm }) => {

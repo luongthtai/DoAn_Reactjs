@@ -13,7 +13,7 @@ export default function ProfilePage() {
     if (isLogin) {
         return (
             <>
-                <main className='bg-gray-50 pt-16 px-8'>
+                <main className='bg-gray-50 pt-16 px-8 overflow-y-scroll h-screen'>
                     <div className='container m-auto py-10 flex gap-4 items-start'>
                         <aside className='w-1/4 hidden gap-4 lg:grid'>
                             <WalletPoint />

@@ -5,13 +5,13 @@ const AuthSlide = createSlice({
     name: 'authentication',
     initialState: {
         isLogin: false,
-        user: [],
+        user: null,
         role: ''
     },
     reducers: {
         login: (state, action) => {
             return {
-                user: action.payload,
+                user: action.payload[0],
                 isLogin: true,
                 role: action.payload[0].role
             }

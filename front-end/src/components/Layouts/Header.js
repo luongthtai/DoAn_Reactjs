@@ -15,7 +15,7 @@ export default function Header({ position }) {
     const dispatch = useDispatch()
 
     const role = useSelector(state => state.auth.role)
-    
+
     const [data, setData] = useState([])
     const [page, setPage] = useState(true)
     const [categories, setCategories] = useState([])
@@ -23,7 +23,7 @@ export default function Header({ position }) {
 
     const isLogin = useSelector(state => state.auth.isLogin)
 
-    const id = useSelector(state => state.auth.user[0].id)
+    const idUser = useSelector(state => state.auth.user.id)
 
     const handleLogout = () => {
         dispatch(logout())
@@ -43,12 +43,12 @@ export default function Header({ position }) {
             .then(res => setCategories(res.data))
             .catch(err => console.log(err))
 
-        if (id) {
-            axios.get(`/users/${id}`)
+        if (idUser) {
+            axios.get(`/users/${idUser}`)
                 .then(res => setData(res.data))
                 .catch(err => console.log(err))
         }
-    }, [id])
+    }, [idUser])
 
     return (
         <header className='py-3 top-0 left-0 w-full z-10 shadow-sm bg-white' style={{ position: position || 'sticky' }}>
@@ -59,8 +59,7 @@ export default function Header({ position }) {
                     {
                         categories.length !== 0 ? <div className='relative hidden xl:block'>
                             <div className='flex gap-2 items-center text-emerald-500 font-bold border rounded px-4 py-2 cursor-pointer select-none' onClick={handleDropdown}>
-                                {/* <TbApple className='text-2xl' /> */}
-                                <img 
+                                <img
                                     src={icon}
                                     alt=''
                                     className='w-5'
@@ -79,6 +78,7 @@ export default function Header({ position }) {
                                         </li>)
                                     }
                                 </ul>
+                                <div className='fixed z-10 w-screen h-screen' onClick={handleDropdown}></div>
                             </div>
                         </div> : null
                     }

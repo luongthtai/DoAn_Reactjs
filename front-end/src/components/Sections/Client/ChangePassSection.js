@@ -14,7 +14,7 @@ export default function ChangePassSection() {
   const [newPass, setNewPass] = useState(true)
   const [cfPass, setCfPass] = useState(true)
 
-  const idUser = useSelector(state => state.auth.user[0].id)
+  const idUser = useSelector(state => state.auth.user.id)
 
   const formik = useFormik({
     initialValues: {

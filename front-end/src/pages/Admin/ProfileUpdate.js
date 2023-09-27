@@ -12,7 +12,7 @@ import SideBarDrawer from 'components/Sections/Admin/SideBarDrawer'
 export default function ProfileUpdate() {
     const dispatch = useDispatch()
 
-    const id = useSelector(state => state.auth.user[0].id)
+    const id = useSelector(state => state.auth.user.id)
     const isLogin = useSelector(state => state.auth.isLogin)
 
     const [data, setData] = useState([])
@@ -89,7 +89,7 @@ export default function ProfileUpdate() {
                 <header className='py-3 w-full z-50 shadow fixed bg-white'>
                     <div className='px-10 flex justify-between'>
                         <div className='flex items-center gap-6'>
-                        <button className='text-3xl block lg:hidden' onClick={() => setToggleSidebar(!toggleSidebar)}><CgMenuLeft /></button>
+                            <button className='text-3xl block lg:hidden' onClick={() => setToggleSidebar(!toggleSidebar)}><CgMenuLeft /></button>
                             <Link to="/admin" className='font-extrabold text-3xl md:block hidden'>Pick <span className='text-green-500'>Bazar</span></Link>
                         </div>
 

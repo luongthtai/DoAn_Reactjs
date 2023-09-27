@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 
 export default function ProfileSection() {
-    const id = useSelector(state => state.auth.user[0].id)
+    const id = useSelector(state => state.auth.user.id)
 
     const avatarRef = useRef()
     const [filenameAvatar, setFilenameAvatar] = useState('')

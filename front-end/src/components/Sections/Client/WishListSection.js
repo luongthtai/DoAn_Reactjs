@@ -9,7 +9,7 @@ export default function WishListSection() {
 
     const [data, setData] = useState([])
 
-    const idUser = useSelector(state => state.auth.user[0].id)
+    const idUser = useSelector(state => state.auth.user.id)
 
     const handleDelete = (value) => {
         axios.delete(`/wishlist/delete/${value}`)

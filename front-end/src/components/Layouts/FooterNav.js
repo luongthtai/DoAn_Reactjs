@@ -9,7 +9,7 @@ import ProfileList from '../Sections/Client/ProfileList'
 import CartList from '../Sections/Client/CartList'
 import { BiShoppingBag } from 'react-icons/bi'
 import { useSelector } from 'react-redux'
-import axios from 'axios'
+// import axios from 'axios'
 import Login from 'components/Sections/Client/Login'
 import Register from 'components/Sections/Client/Register'
 
@@ -19,11 +19,11 @@ export default function FooterNav({ search }) {
     const [toggleCart, setToggleCart] = useState(false)
     const [page, setPage] = useState(true)
 
-    const [dataCart, setDataCart] = useState([])
+    const dataCart = useSelector(state => state.cart.cart)
 
     const isLogin = useSelector(state => state.auth.isLogin)
 
-    const id = useSelector(state => state.auth.user[0].id)
+    const id = useSelector(state => state.auth.user.id)
 
     const location = useLocation()
 
@@ -44,15 +44,15 @@ export default function FooterNav({ search }) {
     }
 
     useEffect(() => {
-        if (id) {
-            const getData = axios.get(`/carts/${id}`)
-                .then(res => setDataCart(res.data))
-                .catch(err => console.log(err))
+        // if (id) {
+        //     const getData = axios.get(`/carts/${id}`)
+        //         .then(res => setDataCart(res.data))
+        //         .catch(err => console.log(err))
 
-            if (getData.length !== 0) {
-                setDataCart(getData)
-            }
-        }
+        //     if (getData.length !== 0) {
+        //         setDataCart(getData)
+        //     }
+        // }
     }, [id])
 
     return (
@@ -92,7 +92,8 @@ export default function FooterNav({ search }) {
                             <span>{dataCart.length} Items</span>
                         </div>
 
-                        <p className="bg-white p-2 rounded text-emerald-500 font-bold text-center">${dataCart.length ? dataCart.map(item => item.price++) : 0}</p>
+                        {/* <p className="bg-white p-2 rounded text-emerald-500 font-bold text-center">${dataCart.length ? dataCart.map(item => item.price++) : 0}</p> */}
+                        <p className="bg-white p-2 rounded text-emerald-500 font-bold text-center">${dataCart.length}</p>
                     </button>
                     :
                     null
@@ -100,7 +101,7 @@ export default function FooterNav({ search }) {
 
             <MenuHeader toggle={toggleMenu} onclick={handleToggleMenu} />
             <ProfileList toggle={toggleProfile} onclick={handleToggleProfile} />
-            <CartList toggle={toggleCart} onclick={handleToggleCart} />
+            {/* <CartList toggle={toggleCart} onclick={handleToggleCart} /> */}
 
             {
                 !isLogin ? (

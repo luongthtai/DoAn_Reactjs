@@ -8,7 +8,8 @@ import LoadingScreen from 'components/Layouts/LoadingScreen'
 export default function CartList({ toggle, onclick }) {
     const dispatch = useDispatch()
 
-    const id = useSelector(state => state.auth.user[0].id)
+    const id = useSelector(state => state.auth.user.id)
+
     const data = useSelector(state => state.cart.cart)
     const isLoading = useSelector(state => state.cart.isLoading)
 
@@ -21,6 +22,8 @@ export default function CartList({ toggle, onclick }) {
     if (isLoading && id) {
         return <LoadingScreen />
     }
+
+    return <p style={{ transform: toggle ? 'translateX(0)' : 'translateX(100%)' }}>{JSON.stringify(data)}</p>
 
     return (
         <>
@@ -51,7 +54,7 @@ export default function CartList({ toggle, onclick }) {
                 <div className='absolute w-full py-4 bottom-0 px-3 bg-white'>
                     <div className='bg-emerald-600 rounded-full relative p-5 text-white font-bold flex justify-between items-center'>
                         <p>Checkout</p>
-                        <span className='h-5/6 absolute right-1 top-1/2 -translate-y-1/2 flex justify-center items-center px-6 bg-white rounded-full text-emerald-600'>${data.length ? data.map(item => item.price++) : 0}</span>
+                        {/* <span className='h-5/6 absolute right-1 top-1/2 -translate-y-1/2 flex justify-center items-center px-6 bg-white rounded-full text-emerald-600'>${data.length ? data.map(item => item.price++) : 0}</span> */}
                     </div>
                 </div>
             </div>

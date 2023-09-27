@@ -12,7 +12,7 @@ export default function SellerPage() {
   const dispatch = useDispatch()
   const location = useLocation()
 
-  const idUser = useSelector(state => state.auth.user[0].id)
+  const idUser = useSelector(state => state.auth.user.id)
   const isLogin = useSelector(state => state.auth.isLogin)
 
   const role = useSelector(state => state.auth.role)

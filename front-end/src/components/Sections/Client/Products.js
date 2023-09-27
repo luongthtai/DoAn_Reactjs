@@ -30,7 +30,24 @@ export default function Products() {
       <section className='grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3 p-6 pb-16 xl:pb-6 w-full '>
 
         {
-          data.length !== 0 ? data.map(item => <ProductItem key={item.id} id={item.id} img={item.image} name={item.product_name} descripe={item.descripe} price={item.price} sell={item.sell} nameShop={item.name_shop} category={item.category_name} shopId={item.shop_id} notify={notify} />) : <p>Not product !!!</p>
+          data.length !== 0 ? data.map(item =>
+            <ProductItem
+              key={item.id}
+              id={item.id}
+              img={item.image}
+              name={item.product_name}
+              descripe={item.descripe}
+              price={item.price}
+              sell={item.sell}
+              nameShop={item.name_shop}
+              category={item.category_name}
+              shopId={item.shop_id}
+              notify={notify}
+
+            />
+          )
+            :
+            <p>Not product !!!</p>
         }
       </section>
     </>
